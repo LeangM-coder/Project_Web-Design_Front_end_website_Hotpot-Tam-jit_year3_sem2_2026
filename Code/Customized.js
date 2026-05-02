@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadProducts("soup");
   setupMenuButtons();
   setupSpiceButtons();
+  setupCheckoutButton();
   // Show spice level section by default since soup is loaded
   document.getElementById("spice-level-section").style.display = "block";
 });
@@ -175,6 +176,35 @@ function setupSpiceButtons() {
       
       console.log("Selected spice level:", selectedSpiceLevel);
     });
+  });
+}
+
+function setupCheckoutButton() {
+  const checkoutButton = document.querySelector(".checkout-btn");
+  if (!checkoutButton) return;
+
+  checkoutButton.addEventListener("click", function () {
+    const items = Object.values(orderItems).map((item) => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+    }));
+
+    if (!items.length) {
+      window.alert("Please add at least one item before checkout.");
+      return;
+    }
+
+    const receiptData = [
+      {
+        name: "Order #1: Customized Hotpot",
+        spiceLevel: selectedSpiceLevel,
+        items,
+      },
+    ];
+
+    localStorage.setItem("deliveryReceipt", JSON.stringify(receiptData));
+    window.location.href = "./Delivery.html";
   });
 }
 
