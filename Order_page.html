@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Order_page.css">
+
+    <title>Hotpot Tam Jit</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">HOTPOT TAM JIT</div>
+
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Customer</a>
+            <a href="#" class="Order_active">Order</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+    <!-- Main -->
+    <main class="container">
+        <h1 class="title">Set Hotpot-Sea Food</h1>
+        <div class="top-section">
+            <!-- Left Image -->
+            <div class="hotpot-image">
+                <img src="images/spicy-pepper-curry-surf-and-turf-hot-pot-set-with-fresh-seafood-sliced-pork-and-vegetables-isolated-on-background-side-view-of-taiwan-food-photo.jpg" alt="Hotpot">
+            </div>
+            <!-- Spice level -->
+             <div class="spice-box">
+                <h2>Spice Level</h2>
+                <p>Choose your preferred spice level</p>
+
+                <div class="spice-grid">
+                    <!-- Mild -->
+                    <button class="spice-btn" onclick="selectSpice('Mild',this)">
+                        <b>Mild</b>
+                        <br>
+                        <small>Gentle heat</small>
+                    </button>
+                    <!-- Medium -->
+                    <button class="spice-btn" onclick="selectSpice('Medium', this)">
+                        <b>Medium</b>
+                        <br>
+                        <small>Medium heat</small>
+                    </button>
+                    <!-- Hot -->
+                    <button class="spice-btn" onclick="selectSpice('Hot', this)">
+                        <b>Hot</b>
+                        <br>
+                        <small>Spicy heat</small>
+                    </button>
+                    <!-- Extra Hot -->
+                    <button class="spice-btn" onclick="selectSpice('Extra Hot', this)">
+                        <b>Extra Hot</b>
+                        <br>
+                        <small>For brave souls</small>
+                    </button>
+                </div>
+             </div>
+             <!-- Order Summary -->
+              <div class="order-summary">
+                <div class="summary-header">
+                    <h3>Order Summary</h3>
+                </div>
+                <div class="summary-body">
+                    <p><b>Item:</b></p>
+                    <div id="cartItems"></div>
+                    <hr>
+                    <div class="price-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Tax (8%)</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <button class="checkout-btn">Checkout</button>
+                </div>
+              </div>
+        </div>
+        <!-- Category tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showCategory('Proteins', this)">Proteins</button>
+            <button class="tab-btn" onclick="showCategory('Vegetables', this)">Vegetables</button>
+            <button class="tab-btn" onclick="showCategory('Noodles', this)">Noodles</button>
+            <button class="tab-btn" onclick="showCategory('Drinks', this)">Drinks</button>
+        </div>
+        <!-- Items list -->
+        <div class="items-grid" id="itemsGrid"></div>
+        <!-- See more -->
+         <div class="see-more">
+            <button class="see-more-btn">See more</button>
+        </div>
+    </main>
+    <script src="Order_page.js"></script>
+</body>
+</html>
