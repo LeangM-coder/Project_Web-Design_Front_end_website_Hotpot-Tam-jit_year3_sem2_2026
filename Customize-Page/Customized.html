@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customized</title>
+    <link rel="stylesheet" href="./Customized.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav>
+        <div class="logo">
+          <div class="name">
+            <h2>HOTPOT TAM JIT</h2>
+          </div>
+        </div>
+
+        <div class="pages" id="navbar-pages">
+          <ul>
+            <li>
+              <a href="../Home-Page/Homepage.html" id="nav-home" class="nav-link">Home</a>
+            </li>
+            <li>
+              <a
+                href="../Customize-Page/Customized.html"
+                id="nav-customized"
+                class="nav-link active"
+                >Customized</a
+              >
+            </li>
+            <li>
+              <a href="../Order_page/Order_page.html" id="nav-order" class="nav-link">Order</a>
+            </li>
+            <li>
+              <a href="../Card-Page/Cart.html" id="nav-cart" class="nav-link">Cart</a>
+            </li>
+          </ul>
+        </div>
+        <div class="profile">
+          <a href="../Profile-Page/Profile.html"><i class="fa-regular fa-user"></i></a>
+        </div>
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger" id="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+      <!-- Sidebar-->
+      <div class="sidebar" id="sidebar-nav">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Menu</span>
+          <span class="sidebar-close" id="sidebar-close">&times;</span>
+        </div>
+        <ul>
+          <li><a href="../Home-Page/Homepage.html" class="nav-link">Home</a></li>
+          <li>
+            <a href="../Customize-Page/Customized.html" class="nav-link active">Customized</a>
+          </li>
+          <li><a href="../Order_Page/Order_page.html" class="nav-link">Order</a></li>
+          <li><a href="../Card-Page/Cart.html" class="nav-link">Cart</a></li>
+          <li><a href="../Profile-Page/login.html" class="nav-link">Profile</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </header>
+    <!-- Body -->
+    <main>
+      <div class="title">
+        <h1>Customize Your Hotpot</h1>
+      </div>
+      <div class="nav-menu">
+        <ul>
+          <li>
+            <a
+              href=""
+              id="menu-btn-1"
+              class="menu-btn active"
+              data-category="soup"
+              >Soup/Broth</a
+            >
+          </li>
+          <li>
+            <a href="" id="menu-btn-2" class="menu-btn" data-category="meat"
+              >Meat & Seafood</a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              id="menu-btn-3"
+              class="menu-btn"
+              data-category="vegetables"
+              >Vegetables</a
+            >
+          </li>
+          <li>
+            <a href="" id="menu-btn-4" class="menu-btn" data-category="noodles"
+              >Noodles</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="spice-level-section" id="spice-level-section">
+        <h3>Spice Level</h3>
+        <p>Choose your preferred spice level</p>
+        <div class="spice-buttons">
+          <button class="spice-btn" data-level="mild">
+            <div class="peppers"><i class="fas fa-pepper"></i></div>
+            <div class="label">Mild</div>
+            <div class="description">Gentle Heat</div>
+          </button>
+          <button class="spice-btn" data-level="medium">
+            <div class="peppers">
+              <i class="fas fa-pepper"></i><i class="fas fa-pepper"></i>
+            </div>
+            <div class="label">Medium</div>
+            <div class="description">Balance Spice</div>
+          </button>
+          <button class="spice-btn active" data-level="hot">
+            <div class="peppers">
+              <i class="fas fa-pepper"></i><i class="fas fa-pepper"></i
+              ><i class="fas fa-pepper"></i>
+            </div>
+            <div class="label">Hot</div>
+            <div class="description">Serious Heat</div>
+          </button>
+          <button class="spice-btn" data-level="extra-hot">
+            <div class="peppers">
+              <i class="fas fa-pepper"></i><i class="fas fa-pepper"></i
+              ><i class="fas fa-pepper"></i><i class="fas fa-pepper"></i>
+            </div>
+            <div class="label">Extra Hot</div>
+            <div class="description">For Brave Soul</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="products-section">
+          <div id="products-container" class="products-grid">
+            <!-- Products will be loaded here by JavaScript -->
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="spice-note" id="spice-note">
+            <p>
+              <strong>Spice Level:</strong> <span id="selected-spice">Hot</span>
+            </p>
+          </div>
+          <div class="summary-items" id="summary-items">
+            <!-- Items will be added here -->
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="total-price">$0.00</span>
+          </div>
+          <button class="checkout-btn">
+            <button class="checkout-btn" onclick="goToCart()">Checkout</button>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h4>HotPot Tam Jit</h4>
+        </div>
+        <div class="footer-contact">
+          <p><i class="fas fa-envelope"></i> @HotPot_Tamjit</p>
+          <p><i class="fas fa-phone"></i> 012 345 678</p>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2025 HotPot Tam Jit. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./Customized.js"></script>
+    <script>
+      // Sidebar toggle for mobile
+      const hamburger = document.getElementById("hamburger-menu");
+      const sidebar = document.getElementById("sidebar-nav");
+      const overlay = document.getElementById("sidebar-overlay");
+      const closeBtn = document.getElementById("sidebar-close");
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("show");
+        document.body.classList.add("no-scroll");
+      }
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
+        document.body.classList.remove("no-scroll");
+      }
+      hamburger.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      overlay.addEventListener("click", closeSidebar);
+    </script>
+    <script>
+  window.onload = function () {
+  if (typeof cart === "undefined") {
+    cart = [];
+  }
+
+  updateCart();};
+  </script>
+
+  <script>
+  function goToCart() {
+    window.location.href = "../Card-Page/Cart.html";
+  }
+  </script>
+  </body>
+</html>

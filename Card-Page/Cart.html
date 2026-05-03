@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/Customized.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Cart.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="name">
+                    <h2>HOTPOT TAM JIT</h2>
+                </div>
+                
+            </div>
+
+            <div class="pages">
+                <ul>
+          <li><a href="../Home-Page/Homepage.html" class="nav-link">Home</a></li>
+          <li><a href="../Customize-Page/Customized.html" class="nav-link">Customized</a></li>
+          <li><a href="../Order_Page/Order_page.html" class="nav-link">Order</a></li>
+          <li><a href="../Card-Page/Cart.html" class="nav-link">Cart</a></li>
+        </ul>
+            </div>
+            <div class="profile">
+                <a href="/Profile.html"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </nav>
+    </header>
+     <div class="cart-page">
+    <div class="container">
+      <h1 class="section-title">Cart &amp; Checkout</h1>
+
+      <!-- Empty state -->
+      <div class="empty-cart" id="empty-cart" style="display:none;">
+        <div class="icon">🛍️</div>
+        <p>Your cart is empty</p>
+        <a href="menu.html" class="btn btn-primary btn-lg">Browse Menu</a>
+      </div>
+
+      <!-- Order success -->
+      <div class="order-success" id="order-success" style="display:none;">
+        <div class="big-emoji">🎉</div>
+        <h2 class="section-title">Order Placed!</h2>
+        <p>Your delicious hotpot is on its way. Estimated delivery: 15-30 minutes.</p>
+        <a href="index.html" class="btn btn-primary btn-lg">Back to Home</a>
+      </div>
+
+      <!-- Cart content -->
+      <div class="cart-layout" id="cart-content" style="display:none;">
+        <div class="cart-items" id="cart-items"></div>
+
+        <div class="cart-sidebar">
+          <!-- Promo -->
+          <label>Promo Code</label>
+          <div class="input-row">
+            <input class="input" placeholder="Enter code" id="promo-input">
+            <button class="btn btn-outline btn-sm">Apply</button>
+          </div>
+
+          <!-- Delivery toggle -->
+          <label>Delivery Method</label>
+          <div class="delivery-toggle">
+            <button class="toggle-btn active" id="btn-delivery" onclick="setDelivery('delivery')">Delivery</button>
+            <button class="toggle-btn" id="btn-pickup" onclick="setDelivery('pickup')">Pick Up</button>
+          </div>
+
+          <!-- Totals -->
+          <div class="totals">
+            <div class="row muted"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+            <div class="row muted" id="delivery-row"><span>Delivery Fee</span><span>$2.00</span></div>
+            <div class="row muted"><span>Tax (10%)</span><span id="tax">$0.00</span></div>
+            <div class="row grand"><span>Total</span><span class="val" id="grand-total">$0.00</span></div>
+          </div>
+
+          <!-- Checkout form (hidden initially) -->
+          <div id="checkout-form" style="display:none;">
+            <input class="input" placeholder="Full name" required style="width:100%;margin-bottom:.5rem;">
+            <input class="input" placeholder="Phone number" type="tel" required style="width:100%;margin-bottom:.5rem;">
+            <textarea class="input" placeholder="Delivery address" rows="2" id="address-field" style="width:100%;margin-bottom:.5rem;"></textarea>
+            <div style="font-size:.75rem;color:var(--muted-foreground);margin-bottom:.75rem;">Delivery time: 15-30 minutes</div>
+            <button class="btn btn-primary" style="width:100%;" onclick="confirmOrder()">Confirm Order</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;margin-top:.5rem;" onclick="toggleCheckout(false)">Cancel</button>
+          </div>
+
+          <div class="cart-actions" id="cart-actions">
+            <button class="btn btn-primary btn-lg" style="width:100%;" onclick="toggleCheckout(true)">Place Order</button>
+            <button class="btn btn-outline btn-sm" style="width:100%;" onclick="clearCartAndRender()">Clear Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-brand">HotPot Tam Jit</span>
+      <div class="footer-links"><span>@HotPot_Tamjit</span><span>📞 012 345 678</span></div>
+      <p class="footer-copy">© 2026 HotPot Tam Jit. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Cart.js"></script>
+  <script>
+    let deliveryMethod = 'delivery';
+
+    function setDelivery(method) {
+      deliveryMethod = method;
+      document.getElementById('btn-delivery').classList.toggle('active', method === 'delivery');
+      document.getElementById('btn-pickup').classList.toggle('active', method === 'pickup');
+      document.getElementById('delivery-row').style.display = method === 'delivery' ? 'flex' : 'none';
+      document.getElementById('address-field').style.display = method === 'delivery' ? 'block' : 'none';
+      updateTotals();
+    }
+
+    function updateTotals() {
+      const cart = getCart();
+      const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+      const tax = subtotal * 0.1;
+      const fee = deliveryMethod === 'delivery' ? 2 : 0;
+      const total = subtotal + tax + fee;
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+      document.getElementById('grand-total').textContent = '$' + total.toFixed(2);
+    }
+
+    function renderCartPage() {
+      const cart = getCart();
+      const empty = document.getElementById('empty-cart');
+      const content = document.getElementById('cart-content');
+      const success = document.getElementById('order-success');
+
+      if (cart.length === 0) {
+        empty.style.display = 'block';
+        content.style.display = 'none';
+        success.style.display = 'none';
+        return;
+      }
+
+      empty.style.display = 'none';
+      content.style.display = 'flex';
+      success.style.display = 'none';
+
+      const itemsEl = document.getElementById('cart-items');
+      itemsEl.innerHTML = cart.map(item => 
+        <div class="cart-item">
+          <span class="cart-item-emoji">🍲</span>
+          <div class="cart-item-info">
+            <h3>${item.name}</h3>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('${item.id}',${item.quantity - 1})">−</button>
+            <span class="qty-num">${item.quantity}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}',${item.quantity + 1})">+</button>
+          </div>
+          <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+          <button class="remove-btn" onclick="removeFromCart('${item.id}');renderCartPage();">✕</button>
+        </div>
+      ).join('');
+
+      updateTotals();
+    }
+
+    function changeQty(id, qty) {
+      let cart = getCart();
+      if (qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      } else {
+        cart = cart.map(i => i.id === id ? {...i, quantity: qty} : i);
+      }
+      localStorage.setItem('hotpot-cart', JSON.stringify(cart));
+      renderCartPage();
+      updateBadge();
+    }
+
+    function removeFromCart(id) {
+      let cart = getCart().filter(i => i.id !== id);
+      localStorage.setItem('hotpot-cart', JSON.stringify(cart));
+      updateBadge();
+    }
+
+    function clearCartAndRender() {
+      localStorage.setItem('hotpot-cart', '[]');
+      renderCartPage();
+      updateBadge();
+    }
+
+    function toggleCheckout(show) {
+      document.getElementById('checkout-form').style.display = show ? 'block' : 'none';
+      document.getElementById('cart-actions').style.display = show ? 'none' : 'flex';
+    }
+
+    function confirmOrder() {
+      localStorage.setItem('hotpot-cart', '[]');
+      updateBadge();
+      document.getElementById('cart-content').style.display = 'none';
+      document.getElementById('order-success').style.display = 'block';
+    }
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    });
+
+    renderCartPage();
+  </script>
+</body>
+</html>
+
