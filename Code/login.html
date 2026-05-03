@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - HotPot Tam Jit</title>
+  <link rel="stylesheet" href="./login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="brand">
+        <h1>HOTPOT TARM JIT</h1>
+        <p id="formSubtitle">Welcome back! Login to continue your hotpot order.</p>
+      </div>
+
+      <form id="authForm" class="login-form" autocomplete="off">
+        <h2 id="formTitle">Login</h2>
+
+        <div class="input-group">
+          <label for="name">Name</label>
+          <div class="input-box">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="name" placeholder="Enter your name" required autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="telephone">Telephone</label>
+          <div class="input-box">
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" id="telephone" placeholder="012345678" required autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" placeholder="Enter password" required autocomplete="new-password" />
+            <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
+          </div>
+        </div>
+
+        <div class="input-group signup-only">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="confirmPassword" placeholder="Confirm password" autocomplete="new-password" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login" id="submitBtn">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Login
+        </button>
+
+        <div id="loginMessage" class="login-message"></div>
+
+        <p class="signup-text">
+          <span id="switchText">Don’t have an account?</span>
+          <a href="#" id="switchMode">Create account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="./login.js"></script>
+</body>
+</html>

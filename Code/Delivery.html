@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Delivery.css" />
+    <title>HOTPOT TAM JIT</title>
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <div class="logo">
+          <div class="name">
+            <h2>HOTPOT TAM JIT</h2>
+          </div>
+        </div>
+
+        <div class="pages">
+          <ul>
+            <li>
+              <a href="index.html" id="nav-home" class="nav-link">Home</a>
+            </li>
+
+            <li>
+              <a href="./Customized.html" id="nav-customized" class="nav-link">Customized</a>
+            </li>
+            <li>
+              <a href="./Order.html" id="nav-order" class="nav-link active">Order</a>
+            </li>
+            <li>
+              <a href="./Cart.html" id="nav-cart" class="nav-link">Cart</a>
+            </li>
+          </ul>
+        </div>
+        <div class="profile">
+          <a href="#" aria-label="Profile"
+            ><i class="fa-regular fa-user"></i
+          ></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="back" style="grid-area: box-2">
+        <p class="back"><a href="./Cart.html">&#171;</a></p>
+      </div>
+      <div class="map" style="grid-area: box-1">
+        <iframe
+          id="default"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4648.171255391946!2d104.88546223718454!3d11.578321272081398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951a1e747092d%3A0x850275931c574bf6!2sRavens%20Hope%20Cambodia!5e0!3m2!1skm!2skh!4v1774771357772!5m2!1skm!2skh"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <iframe
+          id="map1"
+          src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d3286.787476324801!2d104.88321550878497!3d11.575422716948443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d11.574459899999999!2d104.883889!4m5!1s0x310951a1e747092d%3A0x850275931c574bf6!2sRavens%20Hope%20Cambodia%2C%20Street%201978%2C%20Phnom%20Penh!3m2!1d11.5772073!2d104.8857041!5e0!3m2!1sen!2skh!4v1777293398316!5m2!1sen!2skh"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <iframe
+          id="map2"
+          src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d21842.033999623432!2d104.86656503347079!3d11.566146930434538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d11.5612243!2d104.8529671!4m5!1s0x310951a1e747092d%3A0x850275931c574bf6!2sRavens%20Hope%20Cambodia%2C%20Street%201978%2C%20Phnom%20Penh!3m2!1d11.5772073!2d104.8857041!5e0!3m2!1sen!2skh!4v1777294244750!5m2!1sen!2skh"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="container" style="grid-area: box-3">
+        <div class="icon-box-1">
+          <span class="location-icon"
+            ><i class="fa-solid fa-store" style="color: black"></i
+          ></span>
+          <div class="location">
+            <span class="location-text"
+              >Ravens Hope Cambodia, Street 1978, Phnom Penh</span
+            >
+          </div>
+        </div>
+        <div class="icon-box-2">
+          <span class="location-icon"
+            ><i class="fa-solid fa-map-marker-alt" style="color: black"></i
+          ></span>
+          <div class="location">
+            <span class="location-text" id="cs-location">Your address</span>
+          </div>
+        </div>
+        <div class="bun">
+          <button type="button" id="yourlocation">Select location</button>
+        </div>
+        <div class="hidden">
+          <button type="button" id="hide-switch">Switch</button>
+          <button type="button" id="hide-continue">Continue</button>
+        </div>
+        <div id="after-pay">
+          <div class="progress">
+            <div
+              id="timer"
+              aria-live="polite"
+              aria-label="Estimated time remaining"
+            >
+             
+            </div>
+            <span>🏪</span>
+            <progress id="myProgress" value="0" max="300"></progress>
+            <span>🍜</span>
+          </div>
+          <p
+            id="delivery-progress-message"
+            class="delivery-progress-message"
+            aria-live="polite"
+          ></p>
+        </div>
+        <div class="receptions">
+          <div class="box-container">
+            <div class="order-container">
+              <div id="orders">
+                <div class="order">
+                  <h3>
+                    <span class="order-title">Order #1: Hot pot spicy</span>
+                    <span class="order-total-price">$6.00</span>
+                  </h3>
+                  <ul>
+                    <li>
+                      <span class="item-name">Slice meat</span>
+                      <span class="price">$2.50</span>
+                    </li>
+                    <li>
+                      <span class="item-name">Corn</span>
+                      <span class="price">$2.50</span>
+                    </li>
+                    <li>
+                      <span class="item-name">Noodle</span>
+                      <span class="price">$1.00</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="order">
+                  <h3>
+                    <span class="order-title">Order #2: Beef Hot pot</span>
+                    <span class="order-total-price">$6.00</span>
+                  </h3>
+                  <ul>
+                    <li>
+                      <span class="item-name">Slice meat</span>
+                      <span class="price">$2.50</span>
+                    </li>
+                    <li>
+                      <span class="item-name">Corn</span>
+                      <span class="price">$2.50</span>
+                    </li>
+                    <li>
+                      <span class="item-name">Noodle</span>
+                      <span class="price">$1.00</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="summary">
+              <div class="summary-row">
+                <span class="summary-label">Subtotal:</span>
+                <span class="summary-value">$12.00</span>
+              </div>
+
+              <div class="summary-row">
+                <span class="summary-label">Tax (8%):</span>
+                <span class="summary-value">$0.96</span>
+              </div>
+
+              <div class="summary-row">
+                <span class="summary-label">Delivery Fee:</span>
+                <span class="summary-value">$2.50</span>
+              </div>
+
+              <div class="grand-total">
+                <span class="label">TOTAL:</span>
+                <span class="amount">$15.46</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact">
+          <ul>
+            <li><a>Contect us |</a></li>
+            <li>
+              <a href="https://www.instagram.com/"
+                ><i class="fas fa-phone"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/"
+                ><i class="fas fa-envelope"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.messenger.com/">
+                <i class="fab fa-facebook-messenger"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script src="Delivery.js"></script>
+  </body>
+</html>
