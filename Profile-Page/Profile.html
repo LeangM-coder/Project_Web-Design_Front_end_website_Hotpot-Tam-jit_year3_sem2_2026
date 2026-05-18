@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - HotPot Tam Jit</title>
+  <link rel="stylesheet" href="Profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="name">
+          <h2>HOTPOT TAM JIT</h2>
+        </div>
+      </div>
+
+      <div class="pages" id="navbar-pages">
+        <ul>
+          <li><a href="../Home-Page/Homepage.html" class="nav-link">Home</a></li>
+          <li><a href="../Customize-Page/Customized.html" class="nav-link">Customized</a></li>
+          <li><a href="../Order_Page/Order_page.html" class="nav-link">Order</a></li>
+          <li><a href="../Card-Page2/card_page.html" class="nav-link">Cart</a></li>
+        </ul>
+      </div>
+      <div class="profile">
+        <a href="profile.html"><i class="fa-regular fa-user"></i></a>
+      </div>
+
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <!-- Sidebar-->
+    <div class="sidebar" id="sidebar-nav">
+      <div class="sidebar-header">
+        <span class="sidebar-title">Menu</span>
+        <span class="sidebar-close" id="sidebar-close">&times;</span>
+      </div>
+         <ul>
+          <li><a href="../Home-Page/Homepage.html" class="nav-link">Home</a></li>
+          <li><a href="../Customize-Page/Customized.html" class="nav-link">Customized</a></li>
+          <li><a href="../Order_Page/Order_page.html" class="nav-link">Order</a></li>
+          <li><a href="../Card-Page2/card_page.html" class="nav-link">Cart</a></li>
+          <li><a href="../Profile-Page/Profile.html" class="nav-link active">Profile</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  </header>
+
+  <!-- Profile Hero -->
+  <section class="profile-hero">
+    <div class="container profile-hero-content">
+      <div class="profile-info">
+        <div class="profile-avatar" id="profileAvatar" style="width:100px;height:100px;border-radius:50%;background:#e60d0d;color:#fff;display:flex;align-items:center;justify-content:center;font-size:2.8em;font-weight:700;user-select:none;">
+        </div>
+
+        <div>
+          <p class="eyebrow">Member Profile</p>
+          <h1 id="displayUserName"></h1>
+          <p id="displayUserTelephone"></p>
+        </div>
+      </div>
+      <div class="profile-actions" style="display:flex;gap:10px;align-items:center;flex-wrap:nowrap;">
+        <button class="btn btn-primary btn-lg profile-action-btn" id="editProfileBtn">Edit</button>
+        <button class="btn btn-outline btn-lg profile-action-btn" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <section class="profile-tabs-section">
+    <div class="container">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="loyalty">Loyalty Point</button>
+        <button class="tab-btn" data-tab="favorites">Favorites</button>
+        <button class="tab-btn" data-tab="history">Order History</button>
+      </div>
+
+      <!-- Loyalty -->
+      <div class="tab-content active" id="loyalty">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Your Rewards</h2>
+            <p class="section-desc">Earn more points every time you order from HotPot Tam Jit.</p>
+          </div>
+        </div>
+
+        <div class="points-summary">
+          <div class="points-card">
+            <p class="points-label">Available Points</p>
+            <h3><span id="userPoints"></span> pts</h3>
+            <div class="progress-wrap">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reward-grid">
+          <div class="reward-card">
+            <img src="https://i.pinimg.com/webp/1200x/e1/ff/79/e1ff798765f4ee097f099a051b30bd17.webp" alt="Key chain reward">
+            <div class="reward-card-body">
+              <h3>100 Points Reward</h3>
+              <p>Redeem a HotPot Tam Jit key chain when your point balance reaches 100.</p>
+              <div class="reward-footer">
+                <span class="reward-badge">Key Chain</span>
+                <button class="btn btn-primary" onclick="redeemReward(100, 'Key Chain')">Redeem</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="reward-card">
+            <img src="https://i.pinimg.com/736x/d7/2d/60/d72d600ac216993e0ae953cfe0f58da5.jpg" alt="Discount reward">
+            <div class="reward-card-body">
+              <h3>200 Points Reward</h3>
+              <p>Redeem a $1 discount coupon and use it on your next delicious hotpot order.</p>
+              <div class="reward-footer">
+                <span class="reward-badge">$1 Discount</span>
+                <button class="btn btn-primary" onclick="redeemReward(200, '1$ Discount Coupon')">Redeem</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="reward-card">
+            <img src="https://i.pinimg.com/1200x/6d/9a/64/6d9a6472f9e89d6d5ac382a28e0a6c1a.jpg" alt="Hotpot set reward">
+            <div class="reward-card-body">
+              <h3>600 Points Reward</h3>
+              <p>Redeem one hotpot set after collecting enough loyalty points from your purchases.</p>
+              <div class="reward-footer">
+                <span class="reward-badge">Hot Pot Set</span>
+                <button class="btn btn-primary" onclick="redeemReward(600, 'Hot Pot 1 Set')">Redeem</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="loyaltyMessage" class="message"></div>
+      </div>
+
+      <!-- Favorites -->
+      <div class="tab-content" id="favorites">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Favorite Combos</h2>
+            <p class="section-desc">Quick access to the meals you love most.</p>
+          </div>
+        </div>
+
+        <div class="favorites-grid">
+          <div>
+            <h3 class="sub-title">Combo set</h3>
+            <div class="dish-list" id="favoriteComboList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- History -->
+      <div class="tab-content" id="history">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Order History</h2>
+            <p class="section-desc">View all meals you have already ordered.</p>
+          </div>
+        </div>
+
+        <div id="historyContainer"></div>
+      </div>
+
+      <!-- Redeemed Rewards Box -->
+<div id="redeemedRewardsBox" class="redeemed-rewards-box" style="display:none;">
+  <h3>🎉 Your Redeemed Rewards</h3>
+  <ul id="redeemedRewardsList"></ul>
+</div>
+
+    </div>
+  </section>
+
+</section>
+
+  <script src="Profile.js"></script>
+  <script>
+    // Set profile avatar letter
+    document.addEventListener("DOMContentLoaded", function() {
+      var name = localStorage.getItem("profileName") || (JSON.parse(localStorage.getItem("userAccount"))?.name) || "U";
+      var letter = name.trim().charAt(0).toUpperCase();
+      var avatar = document.getElementById("profileAvatar");
+      if (avatar) avatar.textContent = letter;
+    });
+  </script>
+  <script>
+    // Sidebar toggle for mobile (same as Customized.html)
+    const hamburger = document.getElementById("hamburger-menu");
+    const sidebar = document.getElementById("sidebar-nav");
+    const overlay = document.getElementById("sidebar-overlay");
+    const closeBtn = document.getElementById("sidebar-close");
+
+    function openSidebar() {
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
+      document.body.classList.add("no-scroll");
+    }
+    function closeSidebar() {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+      document.body.classList.remove("no-scroll");
+    }
+    if (hamburger) hamburger.addEventListener("click", openSidebar);
+    if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
+    if (overlay) overlay.addEventListener("click", closeSidebar);
+  </script>
+</body>
+</html>

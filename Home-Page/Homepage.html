@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotpot Tam Jit - Home</title>
+
+    <link rel="stylesheet" href="Homepge.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <header>
+      <nav>
+        <div class="logo">
+          <div class="name">
+            <h2>HOTPOT TAM JIT</h2>
+          </div>
+        </div>
+
+        <div class="pages" id="navbar-pages">
+          <ul>
+            <li>
+              <a href="../Home-Page/Homepage.html" class="nav-link active"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="../Customize-Page/Customized.html" class="nav-link"
+                >Customized</a
+              >
+            </li>
+            <li>
+              <a href="../Order_Page/Order_page.html" class="nav-link">Order</a>
+            </li>
+            <li>
+              <a href="../Card-Page2/card_page.html" class="nav-link">Cart</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile">
+          <a href="../Profile-Page/Profile.html">
+            <i class="fa-regular fa-user"></i>
+          </a>
+        </div>
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger" id="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar-nav">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Menu</span>
+          <span class="sidebar-close" id="sidebar-close">&times;</span>
+        </div>
+        <ul>
+          <li>
+            <a href="../Home-Page/Homepage.html" class="nav-link active"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="../Customize-Page/Customized.html" class="nav-link"
+              >Customized</a
+            >
+          </li>
+          <li>
+            <a href="../Order_Page/Order_page.html" class="nav-link">Order</a>
+          </li>
+          <li>
+            <a href="../Card-Page2/card_page.html" class="nav-link">Cart</a>
+          </li>
+          <li>
+            <a href="../Profile-Page/Profile.html" class="nav-link">Profile</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Overlay for sidebar -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </header>
+
+    <div class="carousel" id="imageCarousel">
+  <div class="carousel-inner" id="carouselInner">
+    <!-- Images will be injected here -->
+  </div>
+
+  <button class="carousel-control prev" id="prevBtn">&#10094;</button>
+  <button class="carousel-control next" id="nextBtn">&#10095;</button>
+
+  <div class="carousel-indicators" id="carouselIndicators"></div>
+</div>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+
+      <div style="margin: auto; text-align: center;" class="hero-content">
+        <h1><span>Authentic</span> Chinese Cuisine in Cambodia</h1>
+        <p>Savor the rich, bold flavors of traditional hotpot dishes.</p>
+
+        <button class="btn-primary" onclick="goToOrder('Spicy Soup (Mala)')">
+          Order Now
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= COMBO SECTION ================= -->
+    <section class="combo-section">
+      <h2>The perfect Combo</h2>
+
+      <!-- JS will render here -->
+      <div class="combo-container" id="comboContainer"></div>
+    </section>
+
+    <!-- ================= MAIN DISHES ================= -->
+    <section class="main-dishes">
+      <div class="section-title">Our Main Dishes</div>
+
+      <!-- JS will render here -->
+      <div id="dishContainer"></div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="footer-info">
+        <span><i class="fa-brands fa-facebook"></i> HotPot Tam Jit</span>
+        <span><i class="fa-solid fa-phone"></i> 012 345 678</span>
+      </div>
+    </footer>
+
+    <!-- ================= JS FILE ================= -->
+    <script src="Homepage.js"></script>
+  </body>
+</html>

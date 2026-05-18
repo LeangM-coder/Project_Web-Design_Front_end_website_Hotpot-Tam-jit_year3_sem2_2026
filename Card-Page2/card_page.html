@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart & Checkout - HotPot Tam Jit</title>
+    <link rel="stylesheet" href="card_page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Map container */
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Map info box */
+.map-info {
+  background: #fefefe;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 12px 0;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Preset location buttons */
+.preset-locations {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  padding: 12px 20px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+}
+
+.preset-btn.active {
+  background: #e60d0d;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(230,13,13,0.3);
+}
+
+/* Location form section */
+.location-form-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-left: 4px solid #e60d0d;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 15px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 6px rgba(33,150,243,0.3);
+}
+
+/* Selected location display */
+.location-display {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  border-left: 5px solid #e60d0d;
+  margin-top: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.location-display strong {
+  color: #e60d0d;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.district-info {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Profile icon */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 16px;
+}
+
+.profile a i {
+  color: #000;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile a i:hover {
+  color: #e60d0d;
+  transform: scale(1.1);
+}
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <nav>
+        <div class="logo">
+          <div class="name">
+            <h2>HOTPOT TAM JIT</h2>
+          </div>
+        </div>
+
+        <div class="pages" id="navbar-pages">
+          <ul>
+            <li>
+              <a href="../Home-Page/Homepage.html" class="nav-link">Home</a>
+            </li>
+            <li>
+              <a href="../Customize-Page/Customized.html" class="nav-link">Customized</a>
+            </li>
+            <li>
+              <a href="../Order_Page/Order_page.html" class="nav-link">Order</a>
+            </li>
+            <li>
+              <a href="../Card-Page2/card_page.html" class="nav-link active"
+                >Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile">
+          <a href="../Profile-Page/Profile.html">
+            <i class="fa-regular fa-user"></i>
+          </a>
+        </div>
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger" id="hamburger-menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+      <!-- Sidebar-->
+      <div class="sidebar" id="sidebar-nav">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Menu</span>
+          <span class="sidebar-close" id="sidebar-close">&times;</span>
+        </div>
+        <ul>
+          <li>
+            <a href="../Home-Page/Homepage.html" class="nav-link">Home</a>
+          </li>
+          <li>
+            <a href="../Customize-Page/Customized.html" class="nav-link"
+              >Customized</a
+            >
+          </li>
+          <li>
+            <a href="../Order_Page/Order_page.html" class="nav-link">Order</a>
+          </li>
+          <li>
+            <a style="margin-bottom: 10px;" href="../Card-Page2/card_page.html" class="nav-link active">Cart</a>
+          </li>
+          <li>
+            <a href="../Profile-Page/Profile.html" class="nav-link">Profile</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </header>
+    
+    <!-- CART -->
+    <div class="container">
+      <h2 class="title">Cart & Checkout</h2>
+
+      <div class="cart-layout">
+        <!-- LEFT -->
+        <div class="cart-left">
+          <h3>Items</h3>
+          <div id="cartBox" class="cart-items"></div>
+
+          <!-- LOCATION WITH FORM -->
+          <h3>Select Delivery Location</h3>
+
+          <div class="location-form-section">
+            <div class="form-group">
+              <label for="citySelect">City/Province:</label>
+              <select id="citySelect" onchange="onCityChange()">
+                <option value="">Select a City</option>
+                <option value="Phnom Penh">Phnom Penh</option>
+                <option value="Siem Reap">Siem Reap</option>
+                <option value="Battambang">Battambang</option>
+                <option value="Kampot">Kampot</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="districtSelect">District:</label>
+              <select id="districtSelect" onchange="onDistrictChange()">
+                <option value="">Select a District</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="addressInput">Specific Address (optional):</label>
+              <input
+                type="text"
+                id="addressInput"
+                placeholder="e.g., 123 Street Name, Building, or Landmark"
+                onchange="updateLocationDisplay()"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phoneInput">Phone Number (for delivery):</label>
+              <input
+                type="tel"
+                id="phoneInput"
+                placeholder="e.g., 012 345 678"
+              />
+            </div>
+          </div>
+
+          <!-- SELECTED LOCATION DISPLAY -->
+          <div id="locationDisplay" style="display: none">
+            <div class="location-display">
+              <strong>Delivery Location Selected</strong>
+              <div id="selectedLocationText" style="margin-top: 8px"></div>
+              <div class="district-info" id="selectedLocationDetails"></div>
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- PAYMENT -->
+          <h3>Payment Method</h3>
+          <div class="payment">
+            <label><input type="radio" name="pay" checked /> Credit Card</label>
+            <label><input type="radio" name="pay" /> ABA / Online Pay</label>
+            <label><input type="radio" name="pay" /> Cash on Delivery</label>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="cart-right">
+          <h3>Order Summary</h3>
+
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>$<span id="subtotal">0</span></span>
+          </div>
+
+          <div class="summary-row">
+            <span>Delivery Fee:</span>
+            <span>$<span id="delivery">2</span></span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span>$<span id="total">0</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="buttons">
+        <button class="btn gray" onclick="continueShopping()">
+          Continue Shopping
+        </button>
+        <button class="btn red" onclick="placeOrder()">Place Order</button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="card_page.js"></script>
+  </body>
+</html>
